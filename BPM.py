@@ -60,6 +60,7 @@ class BpmFolders:
 musicfoldername = 'Music Examples'
 musicfolderpath = os.path.join(sys.path[0],musicfoldername)
 
+#Loops over files in the musicfoldername directory
 for file in os.listdir(musicfolderpath):
     f = os.path.join(musicfolderpath,file)
     if os.path.isfile(f):
