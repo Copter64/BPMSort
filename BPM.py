@@ -27,8 +27,9 @@ class BpmFolders:
         marker = es.AudioOnsetsMarker(onsets=beats, type='beep')
         marked_audio = marker(audio)
 
-        self.bpm = round(bpm)
-        
+        # self.bpm = round(bpm)
+        self.bpm = bpm
+
         return self.bpm
 
 
@@ -59,15 +60,17 @@ class BpmFolders:
 #Main code starts here ----------------------
 musicfoldername = 'Music Examples'
 musicfolderpath = os.path.join(sys.path[0],musicfoldername)
+songdict = {}
 
 #Loops over files in the musicfoldername directory
 for file in os.listdir(musicfolderpath):
     f = os.path.join(musicfolderpath,file)
     if os.path.isfile(f):
         musictest = BpmFolders(musicfile=f)
-    musictest.BPM()
-    musictest.MakeDirs()
-    musictest.MoveMusicFile()
+    songdict.update({file:musictest.BPM()})
+
+print(songdict)
+
 
 
 
